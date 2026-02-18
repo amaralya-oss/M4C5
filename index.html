@@ -34,13 +34,13 @@ Esto ayuda a accesibilidad y SEO.
     Título que aparece en la pestaña del navegador.
     -->
 
-        <!-- CSS compilado desde Sass -->
+    <!-- CSS compilado desde Sass -->
     <link rel="stylesheet" href="scss/main.css">
 
 </head>
 
 <body>
-<!-- 
+    <!-- 
 Todo lo visible va dentro de body.
 -->
 
@@ -50,14 +50,18 @@ Todo lo visible va dentro de body.
         Buena práctica semántica.
         -->
 
-        <h1 class="titulo">Registro de Jugador Básquet</h1>
-        <!-- 
+        <div class="rain-container"></div>
+
+
+        <form id="formRegistro">
+
+            <h1 class="titulo">Registro de Jugador Básquet</h1>
+            <!-- 
         Título principal.
         class="titulo" podría usarse en CSS para estilos.
         -->
 
-        <form id="formRegistro">
-        <!-- 
+            <!-- 
         form agrupa los campos de entrada.
         id="formRegistro" es clave porque JS lo usa para capturarlo.
         Este ID conecta HTML con main.js.
@@ -124,7 +128,7 @@ Todo lo visible va dentro de body.
                 <label for="posicion">Posición preferida:</label>
 
                 <select id="posicion" required>
-                <!-- 
+                    <!-- 
                 select crea un menú desplegable.
                 id="posicion" será leído en JS.
                 required obliga a elegir opción válida.

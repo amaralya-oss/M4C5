@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         // 🔹 Validar altura mínima
-        if (isNaN(altura) || altura < 1.60) {
+        if (isNaN(altura) || altura <= 1.60) {
 
             alert("Error: Altura mínima requerida es 1.60cm.");
             return;
@@ -92,23 +92,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         // ===============================
-        // 5️⃣ CLASIFICACIÓN POR EDAD
+        // 5️⃣ CLASIFICACIÓN POR EDAD Y ALTURA
         // ===============================
 
-        // Creamos una variable vacía
-        // Aquí guardaremos la categoría del jugador
         let categoria;
 
-        // Si edad es menor a 18 → Juvenil
-        if (edad < 18) {
-
+        // Juvenil: menor de 18 Y menor a 1.80m
+        if (edad < 16 && altura < 1.80) {
             categoria = "Juvenil";
-
-        } else {
-            // Si no es menor a 18 → Adulto
+        }
+        // Adulto: mayor o igual a 18 O altura mayor o igual a 1.80
+        else if (edad >= 16 || altura >= 1.80) {
             categoria = "Adulto";
         }
-
 
         // ===============================
         // 6️⃣ SI TODO ESTÁ CORRECTO
@@ -130,5 +126,39 @@ Categoría: ${categoria}
     });
 
 
+
+
+    // ===============================
+    // LLUVIA DE PELOTITAS
+    // ===============================
+
+    const rainContainer = document.querySelector(".rain-container");
+
+    function crearPelota() {
+        const ball = document.createElement("img");
+        ball.src = "assets/pelota.png"; // ajusta la ruta si es necesario
+        ball.classList.add("ball");
+
+        // Posición horizontal aleatoria
+        ball.style.left = Math.random() * 100 + "vw";
+
+        // Tamaño aleatorio
+        const size = Math.random() * 40 + 40;
+        ball.style.width = size + "px";
+
+        // Duración aleatoria
+        const duration = Math.random() * 5 + 5;
+        ball.style.animationDuration = duration + "s";
+
+        rainContainer.appendChild(ball);
+
+        // Eliminar pelota después de caer
+        setTimeout(() => {
+            ball.remove();
+        }, duration * 1000);
+    }
+
+    // Crear una pelota cada 500ms
+    setInterval(crearPelota, 500);
 
 });
