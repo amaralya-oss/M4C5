@@ -1,0 +1,31 @@
+
+button {
+
+  padding: 0.9rem;
+
+  background: $orange;
+
+  color: $white;
+
+  border: none;
+
+  border-radius: $radius;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: 0.3s ease;
+
+  letter-spacing: 1px;
+ 
+  &:hover {
+
+    background: $orange-dark;
+
+    transform: scale(1.05);
+
+  }
+
+}
+

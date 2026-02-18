@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<!-- 
+Declara el tipo de documento.
+Indica al navegador que usamos HTML5.
+-->
+
+<html lang="es">
+<!-- 
+Elemento raíz del documento.
+lang="es" indica que el contenido está en español.
+Esto ayuda a accesibilidad y SEO.
+-->
+
+<head>
+    <!-- 
+    Contiene metadatos.
+    Aquí no va contenido visible.
+    -->
+
+    <meta charset="UTF-8">
+    <!-- 
+    Permite usar caracteres especiales como ñ, tildes, etc.
+    Sin esto podrían verse símbolos raros.
+    -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 
+    Hace que el sitio sea responsive.
+    Ajusta el ancho al dispositivo (móvil, tablet, etc).
+    -->
+
+    <title>M4C5</title>
+    <!-- 
+    Título que aparece en la pestaña del navegador.
+    -->
+
+    
+</head>
+
+<body>
+<!-- 
+Todo lo visible va dentro de body.
+-->
+
+    <main>
+        <!-- 
+        main representa el contenido principal de la página.
+        Buena práctica semántica.
+        -->
+
+        <h1 class="titulo">Registro de Jugador Básquet</h1>
+        <!-- 
+        Título principal.
+        class="titulo" podría usarse en CSS para estilos.
+        -->
+
+        <form id="formRegistro">
+        <!-- 
+        form agrupa los campos de entrada.
+        id="formRegistro" es clave porque JS lo usa para capturarlo.
+        Este ID conecta HTML con main.js.
+        -->
+
+            <!-- ========================= -->
+            <!-- CAMPO NOMBRE -->
+            <!-- ========================= -->
+
+            <div>
+                <!-- div solo agrupa visualmente -->
+
+                <label for="nombre">Nombre:</label>
+                <!-- 
+                label describe el input.
+                for="nombre" conecta con id="nombre".
+                Mejora accesibilidad.
+                -->
+
+                <input type="text" id="nombre" required>
+                <!-- 
+                type="text" permite ingresar texto.
+                id="nombre" es usado por JS:
+                document.getElementById("nombre")
+                
+                required activa validación HTML básica.
+                -->
+            </div>
+
+            <!-- ========================= -->
+            <!-- CAMPO EDAD -->
+            <!-- ========================= -->
+
+            <div>
+                <label for="edad">Edad:</label>
+
+                <input type="number" id="edad" required>
+                <!-- 
+                type="number" permite solo números.
+                id="edad" es capturado en JS.
+                required obliga a completar el campo.
+                -->
+            </div>
+
+            <!-- ========================= -->
+            <!-- CAMPO ALTURA -->
+            <!-- ========================= -->
+
+            <div>
+                <label for="altura">Altura (en centímetros):</label>
+
+                <input type="number" id="altura" step="0.01" required>
+                <!-- 
+                step="0.01" permite decimales (1.75, 1.82, etc).
+                id="altura" será usado en JS.
+                -->
+            </div>
+
+            <!-- ========================= -->
+            <!-- CAMPO POSICIÓN -->
+            <!-- ========================= -->
+
+            <div>
+                <label for="posicion">Posición preferida:</label>
+
+                <select id="posicion" required>
+                <!-- 
+                select crea un menú desplegable.
+                id="posicion" será leído en JS.
+                required obliga a elegir opción válida.
+                -->
+
+                    <option value="">Seleccionar</option>
+                    <!-- 
+                    Opción vacía.
+                    Sirve para detectar si el usuario no eligió nada.
+                    JS valida que no sea "".
+                    -->
+
+                    <option value="Base">Base</option>
+                    <option value="Escolta">Escolta</option>
+                    <option value="Alero">Alero</option>
+                    <option value="Ala-Pivot">Ala-Pívot</option>
+                    <option value="Pivot">Pívot</option>
+                </select>
+            </div>
+
+            <!-- ========================= -->
+            <!-- BOTÓN -->
+            <!-- ========================= -->
+
+            <button type="submit">Registrar</button>
+            <!-- 
+            type="submit" hace que el formulario se envíe.
+            Esto dispara el evento "submit"
+            que capturamos en JS con addEventListener.
+            -->
+
+        </form>
+    </main>
+
+
+    <!-- ========================= -->
+    <!-- CONEXIÓN CON JAVASCRIPT -->
+    <!-- ========================= -->
+
+    <script src="main.js"></script>
+    <!-- 
+    Aquí se conecta el archivo JS.
+    Todo lo que programamos ocurre en main.js.
+    Este script se carga después del HTML,
+    lo cual es correcto porque así los elementos
+    ya existen cuando JS los busca.
+    -->
+
+</body>
+
+</html>

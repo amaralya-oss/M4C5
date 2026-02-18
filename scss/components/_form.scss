@@ -1,0 +1,37 @@
+
+form {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: $spacing;
+ 
+  label {
+
+    font-weight: 600;
+
+    color: $blue-electric;
+
+  }
+ 
+  input,
+
+  select {
+
+    @include input-style;
+ 
+    &:focus {
+
+      border-color: $orange;
+
+      box-shadow: 0 0 12px rgba(242, 84, 27, 0.6);
+
+      outline: none;
+
+    }
+
+  }
+
+}
+
