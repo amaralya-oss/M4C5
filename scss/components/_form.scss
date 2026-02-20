@@ -6,6 +6,16 @@ form {
   flex-direction: column;
 
   gap: $spacing;
+
+  .form-group {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 0.5rem;
+
+  }
  
   label {
 
@@ -14,12 +24,30 @@ form {
     color: $white;
 
   }
+
+  .input-wrapper {
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+  }
  
   input,
 
   select {
 
     @include input-style;
+
+    flex: 1;
+
+    padding-right: 2.5rem;
+
+    border: 2px solid transparent;
+
+    transition: all 0.3s ease;
  
     &:focus {
 
@@ -30,6 +58,84 @@ form {
       outline: none;
 
     }
+
+    // Estado válido - éxito
+    &.input-success {
+
+      border-color: $success;
+
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.4);
+
+      background-color: rgba(34, 197, 94, 0.05);
+
+    }
+
+    // Estado inválido - error
+    &.input-error {
+
+      border-color: $error;
+
+      box-shadow: 0 0 12px rgba(239, 68, 68, 0.4);
+
+      background-color: rgba(239, 68, 68, 0.05);
+
+    }
+
+  }
+
+  .validation-icon {
+
+    position: absolute;
+
+    right: 0.75rem;
+
+    font-size: 1.2rem;
+
+    display: none;
+
+    animation: slideIn 0.3s ease;
+
+  }
+
+  input.input-success ~ .validation-icon,
+  select.input-success ~ .validation-icon {
+
+    display: block;
+
+    color: $success;
+
+    content: "✔";
+
+  }
+
+  input.input-error ~ .validation-icon,
+  select.input-error ~ .validation-icon {
+
+    display: block;
+
+    color: $error;
+
+    content: "❌";
+
+  }
+
+}
+
+@keyframes slideIn {
+
+  from {
+
+    transform: scale(0) translateX(10px);
+
+    opacity: 0;
+
+  }
+
+  to {
+
+    transform: scale(1) translateX(0);
+
+    opacity: 1;
 
   }
 

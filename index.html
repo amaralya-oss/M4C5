@@ -43,8 +43,36 @@ Esto ayuda a accesibilidad y SEO.
     <!-- 
 Todo lo visible va dentro de body.
 -->
+    <header class="hero">
+
+        <video autoplay muted loop playsinline class="hero__video">
+            <source src="assets/basket.mp4" type="video/mp4">
+        </video>
+
+        <div class="hero__overlay">
+            <div class="hero__content">
+
+                <div class="hero__brand">
+                    <img src="assets/logo.png" alt="logo" class="hero__logo-img">
+                    <h3 class="hero__logo">EQUIPO TITANES</h3>
+                </div>
+
+                <h1 class="hero__title">
+                    ¿Tienes lo necesario para competir esta temporada?
+                </h1>
+
+                <a href="#formRegistro" class="hero__cta">
+                    Quiero unirme ↓
+                </a>
+
+            </div>
+        </div>
+
+    </header>
+
 
     <main>
+
         <!-- 
         main representa el contenido principal de la página.
         Buena práctica semántica.
@@ -71,7 +99,7 @@ Todo lo visible va dentro de body.
             <!-- CAMPO NOMBRE -->
             <!-- ========================= -->
 
-            <div>
+            <div class="form-group">
                 <!-- div solo agrupa visualmente -->
 
                 <label for="nombre">Nombre:</label>
@@ -81,7 +109,10 @@ Todo lo visible va dentro de body.
                 Mejora accesibilidad.
                 -->
 
-                <input type="text" id="nombre" required>
+                <div class="input-wrapper">
+                    <input type="text" id="nombre" required>
+                    <span class="validation-icon"></span>
+                </div>
                 <!-- 
                 type="text" permite ingresar texto.
                 id="nombre" es usado por JS:
@@ -95,10 +126,13 @@ Todo lo visible va dentro de body.
             <!-- CAMPO EDAD -->
             <!-- ========================= -->
 
-            <div>
+            <div class="form-group">
                 <label for="edad">Edad:</label>
 
-                <input type="number" id="edad" required>
+                <div class="input-wrapper">
+                    <input type="number" id="edad" required>
+                    <span class="validation-icon"></span>
+                </div>
                 <!-- 
                 type="number" permite solo números.
                 id="edad" es capturado en JS.
@@ -107,39 +141,37 @@ Todo lo visible va dentro de body.
             </div>
 
             <!-- ========================= -->
-            <!-- CAMPO ALTURA -->
-            <!-- ========================= -->
+            <!-- class="form-group">
+                <label for="altura">Altura (en centímetros):</label>
 
-            <div>
+                <div class="input-wrapper">
+                    <input type="number" id="altura" step="0.01" required>
+                    <span class="validation-icon"></span>
+                </div
                 <label for="altura">Altura (en centímetros):</label>
 
                 <input type="number" id="altura" step="0.01" required>
-                <!-- 
+            
                 step="0.01" permite decimales (1.75, 1.82, etc).
                 id="altura" será usado en JS.
                 -->
-            </div>
+            </di class="form-group">
+            <label for="posicion">Posición preferida:</label>
 
-            <!-- ========================= -->
-            <!-- CAMPO POSICIÓN -->
-            <!-- ========================= -->
-
-            <div>
-                <label for="posicion">Posición preferida:</label>
-
+            <div class="input-wrapper">
                 <select id="posicion" required>
                     <!-- 
-                select crea un menú desplegable.
-                id="posicion" será leído en JS.
-                required obliga a elegir opción válida.
-                -->
+                    select crea un menú desplegable.
+                    id="posicion" será leído en JS.
+                    required obliga a elegir opción válida.
+                    -->
 
                     <option value="">Seleccionar</option>
                     <!-- 
-                    Opción vacía.
-                    Sirve para detectar si el usuario no eligió nada.
-                    JS valida que no sea "".
-                    -->
+                        Opción vacía.
+                        Sirve para detectar si el usuario no eligió nada.
+                        JS valida que no sea "".
+                        -->
 
                     <option value="Base">Base</option>
                     <option value="Escolta">Escolta</option>
@@ -147,6 +179,7 @@ Todo lo visible va dentro de body.
                     <option value="Ala-Pivot">Ala-Pívot</option>
                     <option value="Pivot">Pívot</option>
                 </select>
+                <span class="validation-icon"></span>
             </div>
 
             <!-- ========================= -->
@@ -161,6 +194,8 @@ Todo lo visible va dentro de body.
             -->
 
         </form>
+
+
     </main>
 
 

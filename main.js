@@ -8,6 +8,85 @@ document.addEventListener("DOMContentLoaded", function () {
     // Esto nos permite trabajar con el formulario desde JavaScript
     const formulario = document.getElementById("formRegistro");
 
+    // ===============================
+    // FUNCIONES DE VALIDACIÓN EN TIEMPO REAL
+    // ===============================
+
+    const validaciones = {
+        nombre: (valor) => {
+            valor = valor.trim();
+            return valor !== "" && valor.length >= 2;
+        },
+        edad: (valor) => {
+            const num = Number(valor);
+            return !isNaN(num) && num > 15 && num <= 35;
+        },
+        altura: (valor) => {
+            const num = Number(valor);
+            return !isNaN(num) && num >= 1.60;
+        },
+        posicion: (valor) => {
+            return valor !== "";
+        }
+    };
+
+    // Función para actualizar el estado visual del campo
+    function actualizarEstadoCampo(inputElement, esValido) {
+        inputElement.classList.remove("input-success", "input-error");
+
+        if (esValido) {
+            inputElement.classList.add("input-success");
+            if (inputElement.nextElementSibling) {
+                inputElement.nextElementSibling.textContent = "✔";
+            }
+        } else if (inputElement.value !== "" && inputElement.value !== inputElement.defaultValue) {
+            inputElement.classList.add("input-error");
+            if (inputElement.nextElementSibling) {
+                inputElement.nextElementSibling.textContent = "❌";
+            }
+        } else {
+            // Campo vacío, sin estado
+            if (inputElement.nextElementSibling) {
+                inputElement.nextElementSibling.textContent = "";
+            }
+        }
+    }
+
+    // ===============================
+    // AGREGAR VALIDACIÓN EN TIEMPO REAL
+    // ===============================
+
+    const campos = {
+        nombre: document.getElementById("nombre"),
+        edad: document.getElementById("edad"),
+        altura: document.getElementById("altura"),
+        posicion: document.getElementById("posicion")
+    };
+
+    // Para cada campo, agregar listeners de input y blur
+    Object.entries(campos).forEach(([nombreCampo, inputElement]) => {
+        if (!inputElement) return;
+
+        // Validar mientras se escribe
+        inputElement.addEventListener("input", function () {
+            const esValido = validaciones[nombreCampo](this.value);
+            actualizarEstadoCampo(this, esValido);
+        });
+
+        // Validar al perder el foco
+        inputElement.addEventListener("blur", function () {
+            const esValido = validaciones[nombreCampo](this.value);
+            if (this.value === "") {
+                this.classList.remove("input-success", "input-error");
+                if (this.nextElementSibling) {
+                    this.nextElementSibling.textContent = "";
+                }
+            } else {
+                actualizarEstadoCampo(this, esValido);
+            }
+        });
+    });
+
 
     // ===============================
     // 2️⃣ ESCUCHAR EL EVENTO "SUBMIT"
@@ -97,7 +176,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         let categoria;
 
-        // Juvenil: menor de 18 Y menor a 1.80m
+        // Juvenil: menor de 16 Y menor a 1.80m
         if (edad < 16 && altura < 1.80) {
             categoria = "Juvenil";
         }
@@ -126,6 +205,19 @@ Categoría: ${categoria}
     });
 
 
+    // ===============
+    // Movimiento botón hero
+    //==================
+    document.querySelector('.hero__cta').addEventListener('click', function (e) {
+        e.preventDefault();
+
+        const target = document.querySelector(this.getAttribute('href'));
+
+        target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    });
 
 
     // ===============================
