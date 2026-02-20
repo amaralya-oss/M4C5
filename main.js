@@ -253,7 +253,7 @@ Categoría: ${categoria}
         }, duration * 1000);
     }
 
-    // Crear una pelota cada 500ms
-    setInterval(crearPelota, 500);
+    // Crear una pelota cada 1200ms
+    setInterval(crearPelota, 1200);
 
 });

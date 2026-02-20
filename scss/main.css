@@ -44,8 +44,8 @@ body {
 }
 
 .hero__logo-img {
-  width: 80px;
-  height: auto;
+  width: auto;
+  height: 18rem;
   margin-bottom: 0.5rem;
 }
 
@@ -55,7 +55,7 @@ body {
 }
 
 .hero__title {
-  font-size: 1.8rem;
+  font-size: 1.9rem;
   margin-bottom: 1.5rem;
 }
 
@@ -180,13 +180,13 @@ form input.input-success,
 form select.input-success {
   border-color: #22C55E;
   box-shadow: 0 0 12px rgba(34, 197, 94, 0.4);
-  background-color: rgba(34, 197, 94, 0.05);
+  background-color: rgb(255, 255, 255);
 }
 form input.input-error,
 form select.input-error {
   border-color: #EF4444;
   box-shadow: 0 0 12px rgba(239, 68, 68, 0.4);
-  background-color: rgba(239, 68, 68, 0.05);
+  background-color: rgb(255, 255, 255);
 }
 form .validation-icon {
   position: absolute;
