@@ -21,9 +21,11 @@ document.addEventListener("DOMContentLoaded", function () {
             const num = Number(valor);
             return !isNaN(num) && num > 15 && num <= 35;
         },
-        altura: (valor) => {
+   altura: (valor) => {
+            // La altura se ingresa en centímetros
+            // El mínimo requerido es 160cm
             const num = Number(valor);
-            return !isNaN(num) && num >= 1.60;
+            return !isNaN(num) && num >= 160;
         },
         posicion: (valor) => {
             return valor !== "";
@@ -154,10 +156,11 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        // 🔹 Validar altura mínima
-        if (isNaN(altura) || altura <= 1.60) {
+      // 🔹 Validar altura mínima
+        // La altura mínima permitida es 160cm
+        if (isNaN(altura) || altura < 160) {
 
-            alert("Error: Altura mínima requerida es 1.60cm.");
+            alert("Error: Altura mínima requerida es 160cm.");
             return;
         }
 
@@ -176,12 +179,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         let categoria;
 
-        // Juvenil: menor de 16 Y menor a 1.80m
-        if (edad < 16 && altura < 1.80) {
+       // Juvenil: menor de 16 Y menor a 180cm
+        if (edad < 16 && altura < 180) {
             categoria = "Juvenil";
         }
-        // Adulto: mayor o igual a 18 O altura mayor o igual a 1.80
-        else if (edad >= 16 || altura >= 1.80) {
+        // Adulto: mayor o igual a 16 O altura mayor o igual a 180cm
+        else if (edad >= 16 || altura >= 180) {
             categoria = "Adulto";
         }
 
@@ -192,12 +195,12 @@ document.addEventListener("DOMContentLoaded", function () {
         // Si el código llegó hasta aquí,
         // significa que pasó todas las validaciones
 
-        alert(`
+alert(`
 Jugador registrado correctamente:
 
 Nombre: ${nombre}
 Edad: ${edad}
-Altura: ${altura}m
+Altura: ${altura}cm
 Posición: ${posicion}
 Categoría: ${categoria}
     `);
